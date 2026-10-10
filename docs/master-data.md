@@ -133,3 +133,70 @@ This distinction is important when transferring knowledge from a classic SAP ERP
 - The routing describes manufacturing operations.
 - Purchasing information records and source lists support procurement.
 - Master data must be maintained correctly for business processes to work reliably.
+
+
+
+## Relationships Between Procurement Master Data
+
+### 1. Material Master
+
+The material master describes the material that a company purchases, stores, produces or sells.
+
+Relevant information depends on the material and its intended use. Examples include the material description, unit of measure and logistics-related data.
+
+In the classic SAP ERP university exercise, transaction `MM01` was used to create a material.
+
+### 2. Supplier Master and Business Partner
+
+Supplier data contains information required to work with a supplier. In the classic SAP ERP exercise, supplier information included general data, purchasing data and accounting data.
+
+In SAP S/4HANA, the Business Partner approach is central to maintaining business partner data and assigning the relevant customer or supplier roles.
+
+Classic transaction `XK01` is documented here as part of the university exercise, not as a recommendation for a modern S/4HANA workflow.
+
+### 3. Purchasing Info Record
+
+A purchasing info record maintains purchasing-related information for a material and a supplier.
+
+It helps the purchasing process use relevant supplier-material information when creating purchasing documents.
+
+The classic SAP ERP exercise used transaction `ME11` to create a purchasing info record.
+
+### 4. Source List
+
+A source list records relevant sources of supply for a material according to the applicable validity and purchasing settings.
+
+It can support source determination, depending on the system configuration and procurement scenario.
+
+The classic SAP ERP exercise used transaction `ME01` to maintain a source list.
+
+### 5. How the Objects Work Together
+
+The following questions help explain the relationships:
+
+- **Material master:** What material is required?
+- **Supplier master / Business Partner:** Which supplier is involved?
+- **Purchasing info record:** What purchasing information is maintained for this supplier-material combination?
+- **Source list:** Which sources of supply are relevant or permitted for the material?
+- **Purchase order:** What has actually been ordered in this specific business transaction?
+
+Master data supports business transactions, but it does not replace them. A purchase order documents a specific procurement event, whereas the master data provides reusable information for the process.
+
+### 6. Business Impact of Master Data Quality
+
+Incorrect or incomplete master data can lead to purchasing errors, delays and additional manual work.
+
+Examples include:
+
+- Incorrect material information
+- Missing supplier data
+- Inaccurate purchasing conditions
+- Incomplete or outdated source-of-supply information
+
+As a junior SAP consultant, it is important to understand how master data affects process execution and how to investigate potential data-related issues.
+
+### 7. Scope of This Documentation
+
+This section combines concepts covered in the classic SAP ERP university exercise with a conceptual description of SAP S/4HANA.
+
+The described transactions and process relationships have not been validated through execution in a live SAP S/4HANA system.
