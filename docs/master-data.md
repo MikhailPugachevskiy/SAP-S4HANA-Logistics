@@ -200,3 +200,39 @@ As a junior SAP consultant, it is important to understand how master data affect
 This section combines concepts covered in the classic SAP ERP university exercise with a conceptual description of SAP S/4HANA.
 
 The described transactions and process relationships have not been validated through execution in a live SAP S/4HANA system.
+
+
+
+## Master Data Quality: Procurement Validation Scenarios
+
+### Business Context
+
+In the PC production case, 30 additional hard drives must be procured to fulfill a customer order for 50 PCs.
+
+Successful procurement depends not only on the purchasing documents but also on consistent and complete master data.
+
+### Proposed Test Scenarios
+
+| Test ID | Scenario | Expected Result |
+|---|---|---|
+| MD-001 | Material master contains an incorrect base unit of measure | Inconsistent quantity handling is identified and investigated |
+| MD-002 | Required purchasing data for the supplier is missing | The missing data is identified before successful purchasing document processing |
+| MD-003 | Purchasing info record contains an incorrect planned delivery time | The planning impact is identified and the relevant master data is reviewed |
+| MD-004 | Source list contains an unsuitable or blocked source | Source determination follows the applicable source list settings |
+| MD-005 | Correct material, supplier and purchasing master data are available | The procurement process can proceed without master-data-related issues |
+
+### Consultant's Troubleshooting Approach
+
+1. Record the user's description of the issue and the exact system message.
+2. Identify the affected process step and organizational units.
+3. Check the relevant material and supplier/Business Partner master data.
+4. Review the purchasing info record and source list where applicable.
+5. Consider other potential causes, including authorization or configuration issues.
+6. Document the findings and coordinate the required correction.
+7. Repeat the relevant process test and record the result.
+
+### SAP ERP and SAP S/4HANA Context
+
+The original university exercise used classic SAP ERP transactions such as MM01, XK01, ME11 and ME01. In SAP S/4HANA, the Business Partner concept is relevant for supplier master data management. The specific application and maintenance steps depend on the S/4HANA deployment and system configuration.
+
+**Execution status:** All scenarios are conceptual. No live SAP S/4HANA execution or validation is claimed.
