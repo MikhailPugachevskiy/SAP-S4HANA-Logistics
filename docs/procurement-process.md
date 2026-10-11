@@ -170,3 +170,43 @@ The case illustrates the integration of material requirements planning, purchasi
 | PROC-011 | Invoice quantity differs from received quantity | Discrepancy is identified and handled according to configured tolerances |
 
 **Execution status:** Designed only. These scenarios have not been executed in a live SAP S/4HANA environment.
+
+
+
+## Stock Material vs. Consumable Material: Applied Comparison
+
+### Business Context
+
+The fictional PC manufacturing company needs to procure two different types of goods:
+
+- **Case A:** 30 hard drives for inventory and subsequent PC production.
+- **Case B:** Office supplies intended for direct consumption by the administration department.
+
+The purpose of this comparison is to illustrate how the procurement purpose influences inventory management and account assignment.
+
+### Process Comparison
+
+| Aspect | Case A: Stock Material | Case B: Consumable Material |
+|---|---|---|
+| Business purpose | Supply components for production | Cover an administrative requirement |
+| Inventory management | Stock-managed in this scenario | Direct consumption in this scenario |
+| Purchase order | Standard stock procurement | Account-assigned procurement |
+| Account assignment | No direct consumption account assignment assumed | Cost center assumed |
+| Goods receipt | Increases the relevant material stock | Records receipt for the assigned consumption requirement |
+| Financial integration | Inventory-related accounting impact | Expense allocation according to the account assignment and process settings |
+
+### Proposed Validation Scenarios
+
+| Test ID | Scenario | Expected Result |
+|---|---|---|
+| PROC-012 | Procure 30 hard drives as stock material | Purchase order reflects the intended stock procurement |
+| PROC-013 | Post goods receipt for the 30 hard drives | Relevant material stock is updated |
+| PROC-014 | Procure office supplies for direct consumption | Appropriate account assignment is provided |
+| PROC-015 | Enter an invalid or missing required account assignment | The issue is identified according to system validation rules |
+| PROC-016 | Process the corresponding supplier invoice | Invoice processing reflects the relevant purchasing and accounting data |
+
+### Consultant's Perspective
+
+Before designing or testing a procurement process, clarify whether the goods should be held in inventory or procured for direct consumption. This decision affects required purchasing data, account assignment, inventory handling and financial integration.
+
+**Scope limitation:** This comparison describes simplified business scenarios. Actual posting behavior depends on the selected procurement process and SAP system configuration. No live SAP S/4HANA execution is claimed.
