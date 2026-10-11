@@ -128,3 +128,45 @@ This case study therefore distinguishes the documented classic ERP exercise from
 - Which SAP Fiori applications support each process step in the target system?
 
 These questions will be investigated during further SAP Learning activities.
+
+## Applied Case Study: Procurement of Missing Hard Drives
+
+### Scenario
+
+A customer has ordered 50 PCs. For this simplified case, each PC requires one hard drive. The available stock contains 20 hard drives, resulting in a shortage of 30 units.
+
+The following organizational structure is assumed for documentation purposes. It represents a fictional business scenario and has not been configured or validated in a live SAP system.
+
+| Organizational Unit | Example | Purpose |
+|---|---|---|
+| Company Code | 1000 | Financial accounting entity |
+| Plant | 1000 | Location where the material is required |
+| Storage Location | 0001 | Storage of purchased components |
+| Purchasing Organization | 1000 | Responsible for procurement |
+| Purchasing Group | 001 | Operational purchasing responsibility |
+
+### Proposed Procurement Flow
+
+1. **Requirement determination:** A shortage of 30 hard drives is identified.
+2. **Purchase requisition:** The internal requirement for 30 hard drives is recorded.
+3. **Source determination:** A suitable supplier is identified using the available purchasing master data.
+4. **Purchase order:** Purchasing creates an order for 30 hard drives.
+5. **Goods receipt:** Upon delivery, the goods receipt is recorded with reference to the purchase order.
+6. **Invoice verification:** The supplier invoice is checked against the purchase order and relevant goods receipt.
+7. **Payment:** The payable is processed by Financial Accounting according to the agreed payment terms.
+
+### Integration Perspective
+
+The case illustrates the integration of material requirements planning, purchasing, inventory management and financial accounting. A shortage originating from the production requirement can trigger procurement. The resulting goods receipt updates the material inventory, while invoice verification and payment connect the logistical process to financial accounting.
+
+### Proposed Validation Scenarios
+
+| Test ID | Scenario | Expected Result |
+|---|---|---|
+| PROC-007 | Purchase requisition for 30 hard drives | Internal procurement requirement is recorded correctly |
+| PROC-008 | Purchase order for 30 hard drives | Supplier, quantity, plant and purchasing data are correct |
+| PROC-009 | Goods receipt of 30 hard drives | Relevant stock is updated correctly |
+| PROC-010 | Invoice matches purchase order and goods receipt | Invoice can proceed according to the configured checks |
+| PROC-011 | Invoice quantity differs from received quantity | Discrepancy is identified and handled according to configured tolerances |
+
+**Execution status:** Designed only. These scenarios have not been executed in a live SAP S/4HANA environment.
