@@ -210,3 +210,49 @@ The purpose of this comparison is to illustrate how the procurement purpose infl
 Before designing or testing a procurement process, clarify whether the goods should be held in inventory or procured for direct consumption. This decision affects required purchasing data, account assignment, inventory handling and financial integration.
 
 **Scope limitation:** This comparison describes simplified business scenarios. Actual posting behavior depends on the selected procurement process and SAP system configuration. No live SAP S/4HANA execution is claimed.
+
+
+
+## Advanced Procurement: Purchasing Contract and Source Determination
+
+### Business Scenario
+
+The fictional PC manufacturing company needs to procure 30 additional hard drives to fulfill a customer order for 50 PCs.
+
+For this extended scenario, an existing and valid purchasing contract with a suitable supplier is assumed. The procurement team wants to use the contract as the basis for the purchase order.
+
+### Proposed Process Flow
+
+1. **Maintain purchasing contract:** Relevant materials, supplier details, validity period and agreed purchasing conditions are maintained.
+2. **Create purchase requisition:** The internal requirement for 30 hard drives is recorded.
+3. **Perform source determination:** Suitable sources of supply are evaluated, including the existing purchasing contract where applicable.
+4. **Create purchase order:** The purchasing team creates an order for 30 hard drives with reference to the selected contract.
+5. **Post goods receipt:** The delivered hard drives are recorded with reference to the purchase order.
+6. **Perform invoice verification:** The supplier invoice is checked against the relevant purchasing and goods receipt data.
+
+### Document Relationships
+
+| Document | Business Purpose |
+|---|---|
+| Purchasing Contract | Defines the longer-term purchasing agreement |
+| Purchase Requisition | Records the internal requirement |
+| Purchase Order | Initiates the specific procurement from the supplier |
+| Goods Receipt | Records the receipt of the ordered goods |
+| Supplier Invoice | Records the supplier's claim for payment |
+
+### Proposed Validation Scenarios
+
+| Test ID | Scenario | Expected Result |
+|---|---|---|
+| ADV-001 | A valid purchasing contract is available | The contract can be considered as a suitable source of supply |
+| ADV-002 | Purchase requisition is created for 30 hard drives | The required quantity and organizational data are recorded correctly |
+| ADV-003 | Purchase order is created with contract reference | Relevant contract conditions are considered according to system settings |
+| ADV-004 | Goods receipt is posted for 30 hard drives | The relevant stock and purchasing document status are updated |
+| ADV-005 | Supplier invoice matches the purchasing documents | Invoice processing follows the configured checks |
+| ADV-006 | Supplier invoice contains a quantity or price discrepancy | The discrepancy is identified and handled according to configured tolerance rules |
+
+### Consultant's Perspective
+
+When introducing contract-based procurement, the consultant should clarify the business requirements, check the relevant master and contract data, understand the source determination process, document the intended document flow and prepare suitable validation scenarios.
+
+**Execution status:** Designed only. The case study does not claim that the contract, purchase order, goods receipt or invoice was created in a live SAP S/4HANA system.
